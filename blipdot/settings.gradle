@@ -1,0 +1,2 @@
+rootProject.name='blipdot'
+include ':app'
