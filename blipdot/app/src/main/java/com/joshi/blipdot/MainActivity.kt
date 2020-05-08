@@ -2,6 +2,8 @@ package com.joshi.blipdot
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.AbsoluteLayout
 import android.widget.Button
 import android.widget.Toast
@@ -18,15 +20,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var yellowBtn = findViewById<Button>(R.id.yellowBtn)
-        var blackBackground = findViewById<AbsoluteLayout>(R.id.blackBackground)
+        val yellowBtn = findViewById<Button>(R.id.yellowBtn)
+        val blackBackground = findViewById<AbsoluteLayout>(R.id.blackBackground)
 
         blackBackground.setOnClickListener() {
             Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show()
         }
 
         yellowBtn.setOnClickListener() {
-
+            val animation = AnimationUtils.loadAnimation(this, R.anim.fade_out)
+            yellowBtn.startAnimation(animation)
+            
         }
     }
 }
