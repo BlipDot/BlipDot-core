@@ -1,17 +1,9 @@
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/blackBackground"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#000">
 
-    <Button
-        android:id="@+id/yellowBtn"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_x="4dp"
-        android:layout_y="8dp"
-        android:alpha="1"
-        android:background="@drawable/roundedbutton"
-        android:text=" "
-        android:textSize="15dp" />
-</AbsoluteLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
