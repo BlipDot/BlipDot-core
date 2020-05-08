@@ -2,6 +2,7 @@ package com.joshi.blipdot
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.style.AbsoluteSizeSpan
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.AbsoluteLayout
@@ -30,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         yellowBtn.setOnClickListener() {
             val animation = AnimationUtils.loadAnimation(this, R.anim.fade_out)
             yellowBtn.startAnimation(animation)
-            
         }
     }
 }
