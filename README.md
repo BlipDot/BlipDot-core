@@ -2,7 +2,7 @@
 This is the main android app
 
 
-<h1>Game Idea:</h1>
+<h2>Game Idea:</h2>
 <ol>
   <li>Dots pop up on the screen randomly</li>
 <li>Each dot has an expiry timing (eg: 3 seconds, 5 seconds, etc) after which the dot disappears.</li>
@@ -22,7 +22,7 @@ This is the main android app
 <li>Dots must not spawn in a 10 pixel radius of other dots.</li>
 </ol>
 
-Alternate :
+<h2>Alternate:</h2>
 <ol>
   <li>No levels, the user plays as long as he/she can i.e until the user gets eliminated.</li>
 <li>No god dot.</li>
