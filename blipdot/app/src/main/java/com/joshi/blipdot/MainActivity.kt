@@ -83,6 +83,14 @@ class MainActivity : AppCompatActivity() {
         val background3 = R.drawable.background3
         buttonCreate(blueBtn, background3, 0, gameHeight - 30, constLayout)
 
+        val orangeBtn = Button(this)
+        val background4 = R.drawable.background4
+        buttonCreate(orangeBtn, background4, gameWidth, gameHeight - 30, constLayout)
+
+        val magentaBtn = Button(this)
+        val background5 = R.drawable.background5
+        buttonCreate(magentaBtn, background5, gameWidth/2, gameHeight/2, constLayout)
+
         constLayout.setOnClickListener {
             Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show()
         }
@@ -99,6 +107,14 @@ class MainActivity : AppCompatActivity() {
 
         blueBtn.setOnClickListener() {
             onclickAnimOther(blueBtn, gameWidth, gameHeight)
+        }
+
+        orangeBtn.setOnClickListener() {
+            onclickAnimOther(orangeBtn, gameWidth, gameHeight)
+        }
+
+        magentaBtn.setOnClickListener() {
+            onclickAnimOther(magentaBtn, gameWidth, gameHeight)
         }
 
     }
