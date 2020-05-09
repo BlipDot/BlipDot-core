@@ -1,16 +1,11 @@
 package com.joshi.blipdot
 
-import android.animation.ObjectAnimator
+import android.graphics.drawable.Drawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.style.AbsoluteSizeSpan
 import android.util.DisplayMetrics
-import android.view.Display
-import android.view.ViewGroup
-import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.AbsoluteLayout
 import android.widget.Button
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -19,41 +14,63 @@ import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
-    fun rand(start: Int, end: Int): Int {
+    public fun rand(start: Int, end: Int): Int {
         require(!(start > end || end - start + 1 > Int.MAX_VALUE)) { "Illegal Argument" }
         return Random(System.nanoTime()).nextInt(end - start + 1) + start
     }
+
+    public fun onclickAnim(view:Button, gameWidth:Int, gameHeight:Int) {
+        val animationOut = AnimationUtils.loadAnimation(this, R.anim.pop_out)
+        view.startAnimation(animationOut)
+        val animationIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        view.translationX = rand(50, gameWidth).toFloat()
+        view.translationY = rand(50, gameHeight).toFloat()
+        view.startAnimation(animationIn)
+    }
+    
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val constLayout = findViewById<ConstraintLayout>(R.id.blackBackground)
-
-        // creating the button
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val width = displayMetrics.widthPixels
+        val height = displayMetrics.heightPixels
+        val gameWidth = width - 70
+        val gameHeight = height - 70
         val yellowBtn = Button(this)
-        // setting layout_width and layout_height using layout parameters
-        yellowBtn.layoutParams = ConstraintLayout.LayoutParams(45, 45)
+        yellowBtn.layoutParams = ConstraintLayout.LayoutParams(60, 60)
         yellowBtn.text = ""
-        yellowBtn.setBackgroundResource(R.drawable.roundedbutton)
+        yellowBtn.setBackgroundResource(R.drawable.roundedbutton1)
         yellowBtn.alpha = 1F
         yellowBtn.textSize = 15F
 
-        // add Button to LinearLayout
         constLayout.addView(yellowBtn)
+
+        val greenBtn = Button(this)
+        greenBtn.layoutParams = ConstraintLayout.LayoutParams(60, 60)
+        greenBtn.text = ""
+        greenBtn.setBackgroundResource(R.drawable.roundedbutton2)
+        greenBtn.alpha = 1F
+        greenBtn.textSize = 15F
+        greenBtn.x = (width - 70).toFloat()
+        greenBtn.y = 0F
+
+        constLayout.addView(greenBtn)
 
         constLayout.setOnClickListener {
             Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show()
         }
 
         yellowBtn.setOnClickListener {
-            val animationOut = AnimationUtils.loadAnimation(this, R.anim.fade_out)
-            yellowBtn.startAnimation(animationOut)
-            val animationIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
-            yellowBtn.translationX = rand(0, 50).toFloat()
-            yellowBtn.translationY = rand(0, 50).toFloat()
-            yellowBtn.startAnimation(animationIn)
+            onclickAnim(yellowBtn, gameWidth, gameHeight)
 
+        }
+
+        greenBtn.setOnClickListener() {
+            onclickAnim(greenBtn, gameWidth, gameHeight)
         }
     }
 }
