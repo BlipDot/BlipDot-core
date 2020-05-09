@@ -65,12 +65,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val constLayout = findViewById<ConstraintLayout>(R.id.blackBackground)
         val displayMetrics = DisplayMetrics()
-
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         val width = displayMetrics.widthPixels
         val height = displayMetrics.heightPixels
         val gameWidth = width - 70
         val gameHeight = height - 70
+
         val yellowBtn = Button(this)
         val background1 = R.drawable.roundedbutton1
         buttonCreate(yellowBtn, background1, 0, 0, constLayout)
@@ -78,6 +78,10 @@ class MainActivity : AppCompatActivity() {
         val greenBtn = Button(this)
         val background2 = R.drawable.roundedbutton2
         buttonCreate(greenBtn, background2, gameWidth, 0, constLayout)
+
+        val blueBtn = Button(this)
+        val background3 = R.drawable.background3
+        buttonCreate(blueBtn, background3, 0, gameHeight - 30, constLayout)
 
         constLayout.setOnClickListener {
             Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show()
@@ -87,11 +91,14 @@ class MainActivity : AppCompatActivity() {
             onclickAnimYellow(yellowBtn, gameWidth, gameHeight)
             yellowBtnX = yellowBtn.x
             yellowBtnY = yellowBtn.y
-
         }
 
         greenBtn.setOnClickListener() {
             onclickAnimOther(greenBtn, gameWidth, gameHeight)
+        }
+
+        blueBtn.setOnClickListener() {
+            onclickAnimOther(blueBtn, gameWidth, gameHeight)
         }
 
     }
