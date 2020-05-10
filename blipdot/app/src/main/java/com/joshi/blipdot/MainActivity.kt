@@ -1,6 +1,5 @@
 package com.joshi.blipdot
 
-import android.graphics.drawable.Drawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -80,15 +79,15 @@ class MainActivity : AppCompatActivity() {
         buttonCreate(greenBtn, background2, gameWidth, 0, constLayout)
 
         val blueBtn = Button(this)
-        val background3 = R.drawable.background3
+        val background3 = R.drawable.roundedbutton3
         buttonCreate(blueBtn, background3, 0, gameHeight - 30, constLayout)
 
         val orangeBtn = Button(this)
-        val background4 = R.drawable.background4
+        val background4 = R.drawable.roundedbutton4
         buttonCreate(orangeBtn, background4, gameWidth, gameHeight - 30, constLayout)
 
         val magentaBtn = Button(this)
-        val background5 = R.drawable.background5
+        val background5 = R.drawable.roundedbutton5
         buttonCreate(magentaBtn, background5, gameWidth/2, gameHeight/2, constLayout)
 
         constLayout.setOnClickListener {
