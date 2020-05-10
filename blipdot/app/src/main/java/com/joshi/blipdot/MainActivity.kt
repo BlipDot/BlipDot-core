@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     public var yellowBtnX:Float = 0F
     public var yellowBtnY:Float = 0F
     public var copiedCoordinates = ArrayList<Float>()
+    public var score:Int = 0
 
 
     public fun rand(start: Int, end: Int): Int {
@@ -68,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         val width = displayMetrics.widthPixels
         val height = displayMetrics.heightPixels
         val gameWidth = width - 70
-        val gameHeight = height - 70
+        val gameHeight = height - 100
 
         val yellowBtn = Button(this)
         val background1 = R.drawable.roundedbutton1
@@ -98,22 +99,27 @@ class MainActivity : AppCompatActivity() {
             onclickAnimYellow(yellowBtn, gameWidth, gameHeight)
             yellowBtnX = yellowBtn.x
             yellowBtnY = yellowBtn.y
+            score++
         }
 
         greenBtn.setOnClickListener() {
             onclickAnimOther(greenBtn, gameWidth, gameHeight)
+            score++
         }
 
         blueBtn.setOnClickListener() {
             onclickAnimOther(blueBtn, gameWidth, gameHeight)
+            score++
         }
 
         orangeBtn.setOnClickListener() {
             onclickAnimOther(orangeBtn, gameWidth, gameHeight)
+            score++
         }
 
         magentaBtn.setOnClickListener() {
             onclickAnimOther(magentaBtn, gameWidth, gameHeight)
+            score++
         }
 
     }
