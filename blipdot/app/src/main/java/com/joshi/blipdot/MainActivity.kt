@@ -1,5 +1,6 @@
 package com.joshi.blipdot
 
+import android.media.MediaPlayer
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.view.menu.MenuAdapter
 import androidx.constraintlayout.widget.ConstraintLayout
 import kotlin.random.Random
 
@@ -16,11 +18,18 @@ class MainActivity : AppCompatActivity() {
     public var yellowBtnY:Float = 0F
     public var copiedCoordinates = ArrayList<Float>()
     public var score:Int = 0
+    public var mediaPlayer: MediaPlayer? = null
+    public var sound: Int = 0
 
 
     public fun rand(start: Int, end: Int): Int {
         require(!(start > end || end - start + 1 > Int.MAX_VALUE)) { "Illegal Argument" }
         return Random(System.nanoTime()).nextInt(end - start + 1) + start
+    }
+
+    public fun popSoundEffect(button: Button, sound: Int) {
+        mediaPlayer = MediaPlayer.create(this, R.raw.pop_sound)
+        mediaPlayer?.start()
     }
 
 
@@ -57,6 +66,7 @@ class MainActivity : AppCompatActivity() {
         view.x = viewXCoordinate.toFloat()
         view.y = viewYCoordinate.toFloat()
         layout.addView(view)
+        sound = R.raw.pop_sound
     }
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -69,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         val width = displayMetrics.widthPixels
         val height = displayMetrics.heightPixels
         val gameWidth = width - 70
-        val gameHeight = height - 100
+        val gameHeight = height - 120
 
         val yellowBtn = Button(this)
         val background1 = R.drawable.roundedbutton1
@@ -97,6 +107,7 @@ class MainActivity : AppCompatActivity() {
 
         yellowBtn.setOnClickListener {
             onclickAnimYellow(yellowBtn, gameWidth, gameHeight)
+            popSoundEffect(yellowBtn, sound)
             yellowBtnX = yellowBtn.x
             yellowBtnY = yellowBtn.y
             score++
@@ -104,20 +115,24 @@ class MainActivity : AppCompatActivity() {
 
         greenBtn.setOnClickListener() {
             onclickAnimOther(greenBtn, gameWidth, gameHeight)
+            popSoundEffect(greenBtn, sound)
             score++
         }
 
         blueBtn.setOnClickListener() {
             onclickAnimOther(blueBtn, gameWidth, gameHeight)
+            popSoundEffect(blueBtn, sound)
             score++
         }
 
         orangeBtn.setOnClickListener() {
+            popSoundEffect(orangeBtn, sound)
             onclickAnimOther(orangeBtn, gameWidth, gameHeight)
             score++
         }
 
         magentaBtn.setOnClickListener() {
+            popSoundEffect(magentaBtn, sound)
             onclickAnimOther(magentaBtn, gameWidth, gameHeight)
             score++
         }
