@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">blipdot</string>
+    <string name="Play">Play</string>
+    <string name="Leaderboards">Leaderboards</string>
 </resources>
