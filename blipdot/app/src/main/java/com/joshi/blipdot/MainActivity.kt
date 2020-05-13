@@ -4,6 +4,7 @@ import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.DisplayMetrics
 import android.view.animation.AnimationUtils
 import android.widget.Button
@@ -12,16 +13,16 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import kotlin.random.Random
-import kotlin.time.ExperimentalTime
 
 class MainActivity : AppCompatActivity() {
-    private var yellowBtnX:Float = 0F
-    private var yellowBtnY:Float = 0F
-    private var copiedCoordinates = ArrayList<Float>()
     private var score:Int = 0
     private var mediaPlayer: MediaPlayer? = null
     private var sound: Int = 0
     private var backgroundTouchCount: Int = 0
+    private var elapsedSeconds: Double = 0.0
+    private var whichButtonCreate: Int = 0
+    private var gameWidth: Int = 0
+    private var gameHeight: Int = 0
 
 
     private fun rand(start: Int, end: Int): Int {
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         layout.addView(view)
         sound = R.raw.pop_sound
     }
-    
+
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,8 +68,8 @@ class MainActivity : AppCompatActivity() {
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         val width = displayMetrics.widthPixels
         val height = displayMetrics.heightPixels
-        val gameWidth = width - 70
-        val gameHeight = height - 150
+        gameWidth = width - 70
+        gameHeight = height - 150
 
         val tStart = System.currentTimeMillis()
 
@@ -95,10 +96,11 @@ class MainActivity : AppCompatActivity() {
 
         constLayout.setOnClickListener {
             backgroundTouchCount++
-            if(backgroundTouchCount >= 5) {
+
+            if(backgroundTouchCount >= 10) {
                 val tEnd = System.currentTimeMillis()
                 val tDelta = tEnd - tStart
-                val elapsedSeconds = tDelta / 1000.0
+                elapsedSeconds = tDelta / 1000.0
                 Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show()
                 Toast.makeText(this, "Time Taken: $elapsedSeconds seconds", Toast.LENGTH_SHORT).show()
             } else {
@@ -107,22 +109,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         yellowBtn.setOnClickListener {
-            onclickAnim(yellowBtn, gameWidth, gameHeight)
             popSoundEffect(yellowBtn, sound)
-            yellowBtnX = yellowBtn.x
-            yellowBtnY = yellowBtn.y
+            onclickAnim(yellowBtn, gameWidth, gameHeight)
             score++
         }
 
         greenBtn.setOnClickListener() {
-            onclickAnim(greenBtn, gameWidth, gameHeight)
             popSoundEffect(greenBtn, sound)
+            onclickAnim(greenBtn, gameWidth, gameHeight)
             score++
         }
 
         blueBtn.setOnClickListener() {
-            onclickAnim(blueBtn, gameWidth, gameHeight)
             popSoundEffect(blueBtn, sound)
+            onclickAnim(blueBtn, gameWidth, gameHeight)
             score++
         }
 
