@@ -1,5 +1,6 @@
 package com.joshi.blipdot
 
+import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -59,6 +60,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        volumeControlStream = AudioManager.STREAM_MUSIC;
         val constLayout = findViewById<ConstraintLayout>(R.id.blackBackground)
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
