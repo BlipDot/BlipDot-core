@@ -14,26 +14,26 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
-    public var yellowBtnX:Float = 0F
-    public var yellowBtnY:Float = 0F
-    public var copiedCoordinates = ArrayList<Float>()
-    public var score:Int = 0
-    public var mediaPlayer: MediaPlayer? = null
-    public var sound: Int = 0
+    private var yellowBtnX:Float = 0F
+    private var yellowBtnY:Float = 0F
+    private var copiedCoordinates = ArrayList<Float>()
+    private var score:Int = 0
+    private var mediaPlayer: MediaPlayer? = null
+    private var sound: Int = 0
 
 
-    public fun rand(start: Int, end: Int): Int {
+    private fun rand(start: Int, end: Int): Int {
         require(!(start > end || end - start + 1 > Int.MAX_VALUE)) { "Illegal Argument" }
         return Random(System.nanoTime()).nextInt(end - start + 1) + start
     }
 
-    public fun popSoundEffect(button: Button, sound: Int) {
+    private fun popSoundEffect(button: Button, sound: Int) {
         mediaPlayer = MediaPlayer.create(this, R.raw.pop_sound)
         mediaPlayer?.start()
     }
 
 
-    public fun onclickAnimYellow(view:Button, gameWidth:Int, gameHeight:Int) {
+    private fun onclickAnim(view:Button, gameWidth:Int, gameHeight:Int) {
         val animationOut = AnimationUtils.loadAnimation(this, R.anim.pop_out)
         view.startAnimation(animationOut)
         val animationIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
@@ -41,23 +41,9 @@ class MainActivity : AppCompatActivity() {
         view.translationY = rand(70, gameHeight).toFloat()
         view.startAnimation(animationIn)
     }
+    
 
-    public fun onclickAnimOther(view:Button, gameWidth:Int, gameHeight:Int) {
-        val animationOut = AnimationUtils.loadAnimation(this, R.anim.pop_out)
-        view.startAnimation(animationOut)
-        val animationIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
-        view.translationX = rand(70, gameWidth).toFloat()
-        view.translationY = rand(70, gameHeight).toFloat()
-        if(yellowBtnX != view.x && yellowBtnY != view.y) {
-            view.startAnimation(animationIn)
-        } else {
-            view.translationX = rand(70, gameHeight).toFloat()
-            view.translationY = rand(70, gameWidth - 10).toFloat()
-            view.startAnimation(animationIn)
-        }
-    }
-
-    public fun buttonCreate(view:Button, drawable:Int, viewXCoordinate:Int, viewYCoordinate:Int, layout: ConstraintLayout) {
+    private fun buttonCreate(view:Button, drawable:Int, viewXCoordinate:Int, viewYCoordinate:Int, layout: ConstraintLayout) {
         view.layoutParams = ConstraintLayout.LayoutParams(60, 60)
         view.text = ""
         view.setBackgroundResource(drawable)
@@ -79,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         val width = displayMetrics.widthPixels
         val height = displayMetrics.heightPixels
         val gameWidth = width - 70
-        val gameHeight = height - 120
+        val gameHeight = height - 150
 
         val yellowBtn = Button(this)
         val background1 = R.drawable.roundedbutton1
@@ -91,11 +77,11 @@ class MainActivity : AppCompatActivity() {
 
         val blueBtn = Button(this)
         val background3 = R.drawable.roundedbutton3
-        buttonCreate(blueBtn, background3, 0, gameHeight - 30, constLayout)
+        buttonCreate(blueBtn, background3, 0, gameHeight, constLayout)
 
         val orangeBtn = Button(this)
         val background4 = R.drawable.roundedbutton4
-        buttonCreate(orangeBtn, background4, gameWidth, gameHeight - 30, constLayout)
+        buttonCreate(orangeBtn, background4, gameWidth, gameHeight, constLayout)
 
         val magentaBtn = Button(this)
         val background5 = R.drawable.roundedbutton5
@@ -106,7 +92,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         yellowBtn.setOnClickListener {
-            onclickAnimYellow(yellowBtn, gameWidth, gameHeight)
+            onclickAnim(yellowBtn, gameWidth, gameHeight)
             popSoundEffect(yellowBtn, sound)
             yellowBtnX = yellowBtn.x
             yellowBtnY = yellowBtn.y
@@ -114,28 +100,27 @@ class MainActivity : AppCompatActivity() {
         }
 
         greenBtn.setOnClickListener() {
-            onclickAnimOther(greenBtn, gameWidth, gameHeight)
+            onclickAnim(greenBtn, gameWidth, gameHeight)
             popSoundEffect(greenBtn, sound)
             score++
         }
 
         blueBtn.setOnClickListener() {
-            onclickAnimOther(blueBtn, gameWidth, gameHeight)
+            onclickAnim(blueBtn, gameWidth, gameHeight)
             popSoundEffect(blueBtn, sound)
             score++
         }
 
         orangeBtn.setOnClickListener() {
             popSoundEffect(orangeBtn, sound)
-            onclickAnimOther(orangeBtn, gameWidth, gameHeight)
+            onclickAnim(orangeBtn, gameWidth, gameHeight)
             score++
         }
 
         magentaBtn.setOnClickListener() {
             popSoundEffect(magentaBtn, sound)
-            onclickAnimOther(magentaBtn, gameWidth, gameHeight)
+            onclickAnim(magentaBtn, gameWidth, gameHeight)
             score++
         }
-
     }
 }
