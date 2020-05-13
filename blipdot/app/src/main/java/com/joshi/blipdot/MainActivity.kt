@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private var score:Int = 0
     private var mediaPlayer: MediaPlayer? = null
     private var sound: Int = 0
+    private var backgroundTouchCount: Int = 0
 
 
     private fun rand(start: Int, end: Int): Int {
@@ -90,7 +91,12 @@ class MainActivity : AppCompatActivity() {
         buttonCreate(magentaBtn, background5, gameWidth/2, gameHeight/2, constLayout)
 
         constLayout.setOnClickListener {
-            Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show()
+            backgroundTouchCount++
+            if(backgroundTouchCount >= 5) {
+                Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Cross: " + backgroundTouchCount, Toast.LENGTH_SHORT).show()
+            }
         }
 
         yellowBtn.setOnClickListener {
