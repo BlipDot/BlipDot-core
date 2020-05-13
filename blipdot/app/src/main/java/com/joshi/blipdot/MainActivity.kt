@@ -56,8 +56,7 @@ class MainActivity : AppCompatActivity() {
         layout.addView(view)
         sound = R.raw.pop_sound
     }
-
-    @ExperimentalTime
+    
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
