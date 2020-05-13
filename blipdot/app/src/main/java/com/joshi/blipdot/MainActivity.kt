@@ -3,16 +3,16 @@ package com.joshi.blipdot
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.view.menu.MenuAdapter
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import kotlin.random.Random
+import kotlin.time.ExperimentalTime
 
 class MainActivity : AppCompatActivity() {
     private var yellowBtnX:Float = 0F
@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         sound = R.raw.pop_sound
     }
 
+    @ExperimentalTime
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +70,9 @@ class MainActivity : AppCompatActivity() {
         val height = displayMetrics.heightPixels
         val gameWidth = width - 70
         val gameHeight = height - 150
+
+        val tStart = System.currentTimeMillis()
+
 
         val yellowBtn = Button(this)
         val background1 = R.drawable.roundedbutton1
@@ -93,9 +97,13 @@ class MainActivity : AppCompatActivity() {
         constLayout.setOnClickListener {
             backgroundTouchCount++
             if(backgroundTouchCount >= 5) {
+                val tEnd = System.currentTimeMillis()
+                val tDelta = tEnd - tStart
+                val elapsedSeconds = tDelta / 1000.0
                 Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Time Taken: $elapsedSeconds seconds", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Cross: " + backgroundTouchCount, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
             }
         }
 
