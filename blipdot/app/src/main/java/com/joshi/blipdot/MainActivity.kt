@@ -113,9 +113,9 @@ class MainActivity : AppCompatActivity() {
         val background3 = R.drawable.roundedbutton3
         buttonCreate(blueBtn, background3, 0, gameHeight, constLayout)
 
-        val orangeBtn = Button(this)
+        val peachBtn = Button(this)
         val background4 = R.drawable.roundedbutton4
-        buttonCreate(orangeBtn, background4, gameWidth, gameHeight, constLayout)
+        buttonCreate(peachBtn, background4, gameWidth, gameHeight, constLayout)
 
         val magentaBtn = Button(this)
         val background5 = R.drawable.roundedbutton5
@@ -161,7 +161,7 @@ class MainActivity : AppCompatActivity() {
 
         btnClickListener(blueBtn)
 
-        btnClickListener(orangeBtn)
+        btnClickListener(peachBtn)
 
         btnClickListener(magentaBtn)
 
