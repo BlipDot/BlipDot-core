@@ -58,6 +58,34 @@ class MainActivity : AppCompatActivity() {
         sound = R.raw.pop_sound
     }
 
+    private fun redbuttonCreate(view:Button, drawable:Int, viewXCoordinate:Int, viewYCoordinate:Int, layout: ConstraintLayout) {
+        view.layoutParams = ConstraintLayout.LayoutParams(75, 75)
+        view.text = ""
+        view.setBackgroundResource(drawable)
+        view.alpha = 1F
+        view.textSize = 15F
+        view.x = viewXCoordinate.toFloat()
+        view.y = viewYCoordinate.toFloat()
+        layout.addView(view)
+        sound = R.raw.pop_sound
+    }
+
+    private fun redBtnClickListener(view: Button) {
+        view.setOnClickListener() {
+            popSoundEffect(view, sound)
+            onclickAnim(view, gameWidth, gameHeight)
+            score++
+        }
+    }
+
+    private fun btnClickListener(view: Button) {
+        view.setOnClickListener() {
+            popSoundEffect(view, sound)
+            onclickAnim(view, gameWidth, gameHeight)
+            score += 5
+        }
+    }
+
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,48 +122,60 @@ class MainActivity : AppCompatActivity() {
         val background5 = R.drawable.roundedbutton5
         buttonCreate(magentaBtn, background5, gameWidth/2, gameHeight/2, constLayout)
 
+        val redBtn1 = Button(this)
+        val background6 = R.drawable.roundedbutton6
+
+        val redBtn2 = Button(this)
+        val redBtn3 = Button(this)
+        val redBtn4 = Button(this)
+        val redBtn5 = Button(this)
+
         constLayout.setOnClickListener {
             backgroundTouchCount++
-
-            if(backgroundTouchCount >= 10) {
+            if(backgroundTouchCount == 1) {
+                Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
+                redbuttonCreate(redBtn1, background6, rand(0, gameWidth), rand(0, gameHeight), constLayout)
+            } else if(backgroundTouchCount == 2) {
+                Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
+                redbuttonCreate(redBtn2, background6, rand(0, gameWidth), rand(0, gameHeight), constLayout)
+            } else if(backgroundTouchCount == 3) {
+                Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
+                redbuttonCreate(redBtn3, background6, rand(0, gameWidth), rand(0, gameHeight), constLayout)
+            } else if(backgroundTouchCount == 4) {
+                Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
+                redbuttonCreate(redBtn4, background6, rand(0, gameWidth), rand(0, gameHeight), constLayout)
+            } else if(backgroundTouchCount == 5) {
+                Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
+                redbuttonCreate(redBtn5, background6, rand(0, gameWidth), rand(0, gameHeight), constLayout)
+            } else {
                 val tEnd = System.currentTimeMillis()
                 val tDelta = tEnd - tStart
                 elapsedSeconds = tDelta / 1000.0
                 Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show()
                 Toast.makeText(this, "Time Taken: $elapsedSeconds seconds", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
             }
         }
 
-        yellowBtn.setOnClickListener {
-            popSoundEffect(yellowBtn, sound)
-            onclickAnim(yellowBtn, gameWidth, gameHeight)
-            score++
-        }
+        btnClickListener(yellowBtn)
 
-        greenBtn.setOnClickListener() {
-            popSoundEffect(greenBtn, sound)
-            onclickAnim(greenBtn, gameWidth, gameHeight)
-            score++
-        }
+        btnClickListener(greenBtn)
 
-        blueBtn.setOnClickListener() {
-            popSoundEffect(blueBtn, sound)
-            onclickAnim(blueBtn, gameWidth, gameHeight)
-            score++
-        }
+        btnClickListener(blueBtn)
 
-        orangeBtn.setOnClickListener() {
-            popSoundEffect(orangeBtn, sound)
-            onclickAnim(orangeBtn, gameWidth, gameHeight)
-            score++
-        }
+        btnClickListener(orangeBtn)
 
-        magentaBtn.setOnClickListener() {
-            popSoundEffect(magentaBtn, sound)
-            onclickAnim(magentaBtn, gameWidth, gameHeight)
-            score++
-        }
+        btnClickListener(magentaBtn)
+
+        redBtnClickListener(redBtn1)
+
+        redBtnClickListener(redBtn2)
+
+        redBtnClickListener(redBtn3)
+
+        redBtnClickListener(redBtn4)
+
+        redBtnClickListener(redBtn5)
+
+
     }
 }
