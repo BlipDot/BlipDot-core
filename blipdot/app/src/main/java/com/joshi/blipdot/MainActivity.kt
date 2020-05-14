@@ -1,5 +1,6 @@
 package com.joshi.blipdot
 
+import android.content.Context
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Build
@@ -31,6 +32,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun popSoundEffect(button: Button, sound: Int) {
+        if (mediaPlayer != null && mediaPlayer!!.isPlaying()) {
+            mediaPlayer!!.stop()
+            mediaPlayer!!.reset()
+        }
         mediaPlayer = MediaPlayer.create(this, R.raw.pop_sound)
         mediaPlayer?.start()
     }
