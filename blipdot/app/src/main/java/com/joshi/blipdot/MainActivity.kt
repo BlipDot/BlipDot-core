@@ -32,12 +32,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun popSoundEffect(button: Button, sound: Int) {
-        if (mediaPlayer != null && mediaPlayer!!.isPlaying()) {
+        if (mediaPlayer != null && mediaPlayer!!.isPlaying) {
             mediaPlayer!!.stop()
             mediaPlayer!!.reset()
+            mediaPlayer = MediaPlayer.create(this, R.raw.pop_sound)
+            mediaPlayer?.start()
+        } else {
+            mediaPlayer = MediaPlayer.create(this, R.raw.pop_sound)
+            mediaPlayer?.start()
         }
-        mediaPlayer = MediaPlayer.create(this, R.raw.pop_sound)
-        mediaPlayer?.start()
+
     }
 
 
