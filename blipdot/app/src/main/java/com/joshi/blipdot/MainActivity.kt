@@ -101,7 +101,6 @@ class MainActivity : AppCompatActivity() {
 
         val tStart = System.currentTimeMillis()
 
-
         val yellowBtn = Button(this)
         val background1 = R.drawable.roundedbutton1
         buttonCreate(yellowBtn, background1, 0, 0, constLayout)
@@ -123,12 +122,11 @@ class MainActivity : AppCompatActivity() {
         buttonCreate(magentaBtn, background5, gameWidth/2, gameHeight/2, constLayout)
 
         val redBtn1 = Button(this)
-        val background6 = R.drawable.roundedbutton6
-
         val redBtn2 = Button(this)
         val redBtn3 = Button(this)
         val redBtn4 = Button(this)
         val redBtn5 = Button(this)
+        val background6 = R.drawable.roundedbutton6
 
         constLayout.setOnClickListener {
             backgroundTouchCount++
@@ -153,6 +151,7 @@ class MainActivity : AppCompatActivity() {
                 elapsedSeconds = tDelta / 1000.0
                 Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show()
                 Toast.makeText(this, "Time Taken: $elapsedSeconds seconds", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Final Score: $score", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -175,7 +174,5 @@ class MainActivity : AppCompatActivity() {
         redBtnClickListener(redBtn4)
 
         redBtnClickListener(redBtn5)
-
-
     }
 }
