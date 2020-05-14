@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     
 
     private fun buttonCreate(view:Button, drawable:Int, viewXCoordinate:Int, viewYCoordinate:Int, layout: ConstraintLayout) {
-        view.layoutParams = ConstraintLayout.LayoutParams(60, 60)
+        view.layoutParams = ConstraintLayout.LayoutParams(70, 70)
         view.text = ""
         view.setBackgroundResource(drawable)
         view.alpha = 1F
