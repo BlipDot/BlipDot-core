@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
         val animationIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
         btnDisplay5(view, time_in_seconds)
         view.startAnimation(animationIn)
-    }*/g
+    }*/
 
     /*private fun clickMissAnim(view: Button, gameWidth: Int, gameHeight: Int, time_in_seconds: Long) {
         val animationOut = AnimationUtils.loadAnimation(this, R.anim.fade_out)
