@@ -5,6 +5,7 @@ import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Handler
 import android.util.DisplayMetrics
 import android.view.animation.AnimationUtils
@@ -24,7 +25,10 @@ class MainActivity : AppCompatActivity() {
     private var whichButtonCreate: Int = 0
     private var gameWidth: Int = 0
     private var gameHeight: Int = 0
-
+    var START_MILLI_SECONDS = 1000L
+    lateinit var countdown_timer: CountDownTimer
+    var isRunning: Boolean = false;
+    var time_in_milli_seconds = 0L
 
     private fun rand(start: Int, end: Int): Int {
         require(!(start > end || end - start + 1 > Int.MAX_VALUE)) { "Illegal Argument" }
@@ -44,25 +48,28 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-    private fun onclickAnim(view:Button, gameWidth:Int, gameHeight:Int) {
+    private fun onclickAnim(view:Button, gameWidth:Int, gameHeight:Int, time_in_seconds: Long) {
         val animationOut = AnimationUtils.loadAnimation(this, R.anim.pop_out)
         view.startAnimation(animationOut)
         val animationIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
-        view.translationX = rand(70, gameWidth).toFloat()
-        view.translationY = rand(70, gameHeight).toFloat()
+        btnDisplay(view, time_in_seconds)
         view.startAnimation(animationIn)
     }
-    
 
-    private fun buttonCreate(view:Button, drawable:Int, viewXCoordinate:Int, viewYCoordinate:Int, layout: ConstraintLayout) {
+    private fun clickMissAnim(view: Button, gameWidth: Int, gameHeight: Int, time_in_seconds: Long) {
+        val animationOut = AnimationUtils.loadAnimation(this, R.anim.fade_out)
+        view.startAnimation(animationOut)
+        val animationIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        btnDisplay(view, time_in_seconds)
+        view.startAnimation(animationIn)
+    }
+
+    private fun buttonCreate(view:Button, drawable:Int, layout: ConstraintLayout) {
         view.layoutParams = ConstraintLayout.LayoutParams(70, 70)
         view.text = ""
         view.setBackgroundResource(drawable)
         view.alpha = 1F
         view.textSize = 15F
-        view.x = viewXCoordinate.toFloat()
-        view.y = viewYCoordinate.toFloat()
         layout.addView(view)
         sound = R.raw.pop_sound
     }
@@ -82,7 +89,7 @@ class MainActivity : AppCompatActivity() {
     private fun redBtnClickListener(view: Button) {
         view.setOnClickListener() {
             popSoundEffect(view, sound)
-            onclickAnim(view, gameWidth, gameHeight)
+            onclickAnim(view, gameWidth, gameHeight, time_in_milli_seconds)
             score++
         }
     }
@@ -90,9 +97,46 @@ class MainActivity : AppCompatActivity() {
     private fun btnClickListener(view: Button) {
         view.setOnClickListener() {
             popSoundEffect(view, sound)
-            onclickAnim(view, gameWidth, gameHeight)
+            onclickAnim(view, gameWidth, gameHeight, time_in_milli_seconds)
             score += 5
         }
+    }
+
+    private fun startTimer(time_in_seconds: Long) {
+        countdown_timer = object : CountDownTimer(time_in_seconds, 1000) {
+            override fun onFinish() {
+                //clickMissAnim(view, gameWidth, gameHeight)
+                Toast.makeText(this@MainActivity, "Change Button position", Toast.LENGTH_SHORT).show()
+            }
+            override fun onTick(p0: Long) {
+                time_in_milli_seconds = p0
+            }
+        }
+        countdown_timer.start()
+        isRunning = true
+    }
+
+    private fun btnDisplay(view: Button, time_in_seconds: Long) {
+        var viewXCoordinate = rand(70, gameWidth)
+        var viewYCoordinate = rand(70, gameHeight)
+        view.translationX = viewXCoordinate.toFloat()
+        view.translationY = viewYCoordinate.toFloat()
+        if(!isRunning) {
+            startTimer(time_in_seconds)
+        } else {
+            pauseTimer()
+            resetTimer()
+        }
+    }
+
+    private fun pauseTimer() {
+        countdown_timer.cancel()
+        isRunning = false
+    }
+
+    private fun resetTimer() {
+        time_in_milli_seconds = START_MILLI_SECONDS
+        startTimer(time_in_milli_seconds * 3)
     }
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -105,6 +149,7 @@ class MainActivity : AppCompatActivity() {
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         val width = displayMetrics.widthPixels
         val height = displayMetrics.heightPixels
+        time_in_milli_seconds = 3 * 1000L
         gameWidth = width - 70
         gameHeight = height - 150
 
@@ -112,23 +157,28 @@ class MainActivity : AppCompatActivity() {
 
         val yellowBtn = Button(this)
         val background1 = R.drawable.roundedbutton1
-        buttonCreate(yellowBtn, background1, 0, 0, constLayout)
+        buttonCreate(yellowBtn, background1, constLayout)
+        btnDisplay(yellowBtn, time_in_milli_seconds)
 
         val greenBtn = Button(this)
         val background2 = R.drawable.roundedbutton2
-        buttonCreate(greenBtn, background2, gameWidth, 0, constLayout)
+        buttonCreate(greenBtn, background2, constLayout)
+        btnDisplay(greenBtn, time_in_milli_seconds)
 
         val blueBtn = Button(this)
         val background3 = R.drawable.roundedbutton3
-        buttonCreate(blueBtn, background3, 0, gameHeight, constLayout)
+        buttonCreate(blueBtn, background3, constLayout)
+        btnDisplay(blueBtn, time_in_milli_seconds)
 
         val peachBtn = Button(this)
         val background4 = R.drawable.roundedbutton4
-        buttonCreate(peachBtn, background4, gameWidth, gameHeight, constLayout)
+        buttonCreate(peachBtn, background4, constLayout)
+        btnDisplay(peachBtn, time_in_milli_seconds)
 
         val magentaBtn = Button(this)
         val background5 = R.drawable.roundedbutton5
-        buttonCreate(magentaBtn, background5, gameWidth/2, gameHeight/2, constLayout)
+        buttonCreate(magentaBtn, background5, constLayout)
+        btnDisplay(magentaBtn, time_in_milli_seconds)
 
         val redBtn1 = Button(this)
         val redBtn2 = Button(this)
