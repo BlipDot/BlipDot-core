@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
             mediaPlayer = MediaPlayer.create(this, R.raw.pop_sound)
             mediaPlayer?.start()
         }
-
     }
 
     private fun onclickAnim(view:Button, gameWidth:Int, gameHeight:Int, time_in_seconds: Long) {
