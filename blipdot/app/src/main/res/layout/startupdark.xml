@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/playBtn"
-        android:layout_width="200dp"
+        android:layout_width="215dp"
         android:layout_height="50dp"
         android:background="@drawable/roundedbutton1"
         android:fontFamily="@font/nixie_one"
@@ -20,16 +20,16 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.468" />
+        app:layout_constraintVertical_bias="0.521" />
 
     <Button
         android:id="@+id/insBtn"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:background="@drawable/roundedbutton5"
+        android:layout_width="215dp"
+        android:layout_height="49dp"
+        android:background="@drawable/roundedbutton2"
         android:fontFamily="@font/nixie_one"
         android:text="Instructions"
         android:textAllCaps="false"
@@ -38,33 +38,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playBtn"
-        app:layout_constraintVertical_bias="0.111" />
-
-    <Button
-        android:id="@+id/licBtn"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:background="@drawable/roundedbutton2"
-        android:fontFamily="@font/nixie_one"
-        android:padding="15px"
-        android:paddingLeft="25px"
-        android:paddingTop="15px"
-        android:paddingRight="25px"
-        android:paddingBottom="15px"
-        android:text="License"
-        android:textAllCaps="false"
-        android:textColor="#000000"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/insBtn"
-        app:layout_constraintVertical_bias="0.139" />
+        app:layout_constraintVertical_bias="0.112" />
 
     <ImageView
         android:id="@+id/logo"
@@ -72,10 +49,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/playBtn"
         app:layout_constraintEnd_toEndOf="@+id/playBtn"
-        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.824"
+        app:layout_constraintVertical_bias="0.825"
         app:srcCompat="@mipmap/blipdotlogo_foreground" />
 
     <ImageView
@@ -87,5 +64,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.832"
         app:srcCompat="@drawable/blipdottext" />
+
+    <TextView
+        android:id="@+id/licenseMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nixie_one"
+        android:text="Licensed under Apache 2.0"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/insBtn"
+        app:layout_constraintVertical_bias="0.508" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
