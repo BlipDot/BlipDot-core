@@ -13,7 +13,7 @@ class StartupActivity: AppCompatActivity() {
         val instructionsBtn = findViewById<Button>(R.id.insBtn)
 
         playBtn.setOnClickListener() {
-            val playIntent = Intent(this, StartupActivity::class.java)
+            val playIntent = Intent(this, MainActivity::class.java)
             startActivity(playIntent)
         }
 
