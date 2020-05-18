@@ -1,7 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#000"
-    android:layout_height="match_parent">
+    android:padding="30px">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="-109dp"
+        tools:layout_editor_absoluteY="11dp">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/nixie_one"
+            android:gravity="start"
+            android:inputType="textPersonName"
+            android:text="Instructions:"
+            android:textAlignment="viewStart"
+            android:textColor="#ff9" />
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/nixie_one"
+            android:gravity="start"
+            android:inputType="textPersonName"
+            android:text="1. Every 30 seconds, a\n colored dot pops up"
+            android:textAlignment="viewStart"
+            android:textColor="#98ff98" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/nixie_one"
+            android:gravity="start"
+            android:inputType="textPersonName"
+            android:text="2. If you touch the black background,\n a red dot appears"
+            android:textAlignment="viewStart"
+            android:textColor="#6A9EB8" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/nixie_one"
+            android:gravity="start"
+            android:inputType="textPersonName"
+            android:text="3. Your main objective is to tap the dots\n as fast as possible"
+            android:textAlignment="viewStart"
+            android:textColor="#fb98f1" />
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/nixie_one"
+            android:gravity="start"
+            android:inputType="textPersonName"
+            android:text="4. Each dot disappears after 3 seconds\n (if not clicked within that much time)"
+            android:textAlignment="viewStart"
+            android:textColor="#ff00ff" />
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/nixie_one"
+            android:gravity="start"
+            android:inputType="textPersonName"
+            android:text="5. Red dots are worth 1 point each"
+            android:textAlignment="viewStart"
+            android:textColor="#ff9" />
+
+        <EditText
+            android:id="@+id/editText6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/nixie_one"
+            android:gravity="start"
+            android:inputType="textPersonName"
+            android:text="6. Non-red dots are worth 5 points each"
+            android:textAlignment="viewStart"
+            android:textColor="#98ff98" />
+
+        <EditText
+            android:id="@+id/editText7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/nixie_one"
+            android:gravity="start"
+            android:inputType="textPersonName"
+            android:text="7. Each non-red dot missed results in a\n deduction of 5 points"
+            android:textAlignment="viewStart"
+            android:textColor="#6a9eb8" />
+
+        <EditText
+            android:id="@+id/editText8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/nixie_one"
+            android:gravity="start"
+            android:inputType="textPersonName"
+            android:text="8. Each red dot missed results in a\n deduction of 2 points"
+            android:textAlignment="viewStart"
+            android:textColor="#fb98f1" />
+
+        <EditText
+            android:id="@+id/editText9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/nixie_one"
+            android:gravity="start"
+            android:inputType="textPersonName"
+            android:text="9. You lose if you touch the background\n more than 5 times \nImplying that there can be a maximum of only \n5 red dots"
+            android:textAlignment="viewStart"
+            android:textColor="#ff00ff" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#000"
+        android:fontFamily="@font/nixie_one"
+        android:gravity="center_horizontal"
+        android:text="Back"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#00FF90"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
