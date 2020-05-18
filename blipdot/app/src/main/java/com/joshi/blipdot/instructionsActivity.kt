@@ -23,13 +23,13 @@ class instructionsActivity: AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.instructions)
-        val backBtn = findViewById<Button>(R.id.backBtn)
+        setContentView(R.layout.gameplay)
+        //val backBtn = findViewById<Button>(R.id.backBtn)
 
-        backBtn.setOnClickListener() {
+        /*backBtn.setOnClickListener() {
             popSoundEffect(backBtn, sound = R.raw.pop_sound)
             val intent = Intent(this, StartupActivity::class.java)
             startActivity(intent)
-        }
+        }*/
     }
 }
