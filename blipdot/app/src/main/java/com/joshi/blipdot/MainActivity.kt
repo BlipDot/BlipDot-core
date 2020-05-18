@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     private var sound: Int = 0
     private var backgroundTouchCount: Int = 0
     private var elapsedSeconds: Double = 0.0
-    private var whichButtonCreate: Int = 0
     private var gameWidth: Int = 0
     private var gameHeight: Int = 0
     var START_MILLI_SECONDS = 1000L
