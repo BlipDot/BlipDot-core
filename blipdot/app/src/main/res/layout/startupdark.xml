@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/playBtn"
         app:layout_constraintEnd_toEndOf="@+id/playBtn"
-        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintHorizontal_bias="0.302"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.825"
@@ -60,7 +60,8 @@
         android:layout_width="153dp"
         android:layout_height="110dp"
         app:layout_constraintBottom_toTopOf="@+id/playBtn"
-        app:layout_constraintStart_toEndOf="@+id/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/logo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.832"
         app:srcCompat="@drawable/blipdottext" />
