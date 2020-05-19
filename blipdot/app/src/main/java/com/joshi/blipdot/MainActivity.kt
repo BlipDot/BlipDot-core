@@ -1,5 +1,6 @@
 package com.joshi.blipdot
 
+import android.content.Intent
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Build
@@ -333,13 +334,16 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 else -> {
+                    score -= 5
                     val tEnd = System.currentTimeMillis()
                     val tDelta = tEnd - tStart
                     elapsedSeconds = tDelta / 1000.0
-                    Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show()
-                    Toast.makeText(this, "Time Taken: $elapsedSeconds seconds", Toast.LENGTH_SHORT)
-                        .show()
-                    Toast.makeText(this, "Final Score: $score", Toast.LENGTH_SHORT).show()
+                    /*Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Time Taken: $elapsedSeconds seconds", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Final Score: $score", Toast.LENGTH_SHORT).show()*/
+                    val intent = Intent(this, endGameActivity::class.java)
+                    intent.putExtra("score", score)
+                    startActivity(intent)
                 }
             }
         }

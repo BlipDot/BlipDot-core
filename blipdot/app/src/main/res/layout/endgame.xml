@@ -25,46 +25,46 @@
         android:background="@drawable/roundedbutton3"
         android:fontFamily="@font/nixie_one"
         android:text="Play Again"
-        android:textStyle="bold"
         android:textAllCaps="false"
         android:textColor="#000"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintEnd_toStartOf="@+id/homeButton"
+        app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.481" />
+        app:layout_constraintVertical_bias="0.482" />
 
     <Button
         android:id="@+id/homeButton"
         android:layout_width="170dp"
         android:layout_height="65dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/roundedbutton4"
         android:fontFamily="@font/nixie_one"
         android:text="Home"
         android:textAllCaps="false"
         android:textStyle="bold"
-        android:background="@drawable/roundedbutton4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.885"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.481" />
+        app:layout_constraintVertical_bias="0.482" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/scoreDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nixie_one"
         android:text=""
-        android:textColor="#fff"
+        android:textColor="#B388FF"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.354"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.194" />
+        app:layout_constraintVertical_bias="0.178" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
