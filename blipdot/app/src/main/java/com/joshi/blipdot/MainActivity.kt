@@ -1,12 +1,10 @@
 package com.joshi.blipdot
 
-import android.content.Context
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.Handler
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -27,8 +25,23 @@ class MainActivity : AppCompatActivity() {
     private var gameHeight: Int = 0
     var START_MILLI_SECONDS = 1000L
     lateinit var countdown_timer: CountDownTimer
-    var isRunning: Boolean = false;
+    lateinit var countdownTimerBtnYellow: CountDownTimer
+    lateinit var countdownTimerBtnGreen: CountDownTimer
+    lateinit var countdownTimerBtnBlue: CountDownTimer
+    lateinit var countdownTimerBtnPeach: CountDownTimer
+    lateinit var countdownTimerBtnMagenta: CountDownTimer
+    var isRunning: Boolean = false
+    var isRunningBtnYellow: Boolean = false
+    var isRunningBtnGreen: Boolean = false
+    var isRunningBtnBlue: Boolean = false
+    var isRunningBtnPeach: Boolean = false
+    var isRunningBtnMagenta: Boolean = false
     var time_in_milli_seconds = 0L
+    lateinit var yellowBtn: Button
+    lateinit var greenBtn: Button
+    lateinit var blueBtn: Button
+    lateinit var peachBtn: Button
+    lateinit var magentaBtn: Button
 
     private fun rand(start: Int, end: Int): Int {
         require(!(start > end || end - start + 1 > Int.MAX_VALUE)) { "Illegal Argument" }
@@ -105,7 +118,7 @@ class MainActivity : AppCompatActivity() {
         countdown_timer = object : CountDownTimer(time_in_seconds, 1000) {
             override fun onFinish() {
                 //clickMissAnim(view, gameWidth, gameHeight)
-                Toast.makeText(this@MainActivity, "Change Button position", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this@MainActivity, "Change Button position", Toast.LENGTH_SHORT).show()
             }
             override fun onTick(p0: Long) {
                 time_in_milli_seconds = p0
@@ -113,6 +126,81 @@ class MainActivity : AppCompatActivity() {
         }
         countdown_timer.start()
         isRunning = true
+    }
+
+    private fun btnGenTimerYellow(time_in_seconds: Long) {
+        countdownTimerBtnYellow = object : CountDownTimer(time_in_seconds, 1000) {
+            override fun onFinish() {
+                val background1 = R.drawable.roundedbutton1
+                val constLayout: ConstraintLayout = findViewById(R.id.blackBackground)
+                buttonCreate(yellowBtn, background1, constLayout)
+            }
+            override fun onTick(p0: Long) {
+                time_in_milli_seconds = p0
+            }
+        }
+        countdownTimerBtnYellow.start()
+        isRunningBtnYellow = true
+    }
+
+    private fun btnGenTimerGreen(time_in_seconds: Long) {
+        countdownTimerBtnGreen = object : CountDownTimer(time_in_seconds, 1000) {
+            override fun onFinish() {
+                val background2 = R.drawable.roundedbutton2
+                val constLayout: ConstraintLayout = findViewById(R.id.blackBackground)
+                buttonCreate(greenBtn, background2, constLayout)
+            }
+            override fun onTick(p0: Long) {
+                time_in_milli_seconds = p0
+            }
+        }
+        countdownTimerBtnGreen.start()
+        isRunningBtnGreen = true
+    }
+
+    private fun btnGenTimerBlue(time_in_seconds: Long) {
+        countdownTimerBtnBlue = object : CountDownTimer(time_in_seconds, 1000) {
+            override fun onFinish() {
+                val background3 = R.drawable.roundedbutton3
+                val constLayout: ConstraintLayout = findViewById(R.id.blackBackground)
+                buttonCreate(blueBtn, background3, constLayout)
+            }
+            override fun onTick(p0: Long) {
+                time_in_milli_seconds = p0
+            }
+        }
+        countdownTimerBtnBlue.start()
+        isRunningBtnBlue = true
+    }
+
+    private fun btnGenTimerPeach(time_in_seconds: Long) {
+        countdownTimerBtnPeach = object : CountDownTimer(time_in_seconds, 1000) {
+            override fun onFinish() {
+                val background4 = R.drawable.roundedbutton4
+                val constLayout: ConstraintLayout = findViewById(R.id.blackBackground)
+                buttonCreate(peachBtn, background4, constLayout)
+            }
+            override fun onTick(p0: Long) {
+                time_in_milli_seconds = p0
+            }
+        }
+        countdownTimerBtnPeach.start()
+        isRunningBtnPeach = true
+    }
+
+    private fun btnGenTimerMagenta(time_in_seconds: Long) {
+        countdownTimerBtnMagenta = object : CountDownTimer(time_in_seconds, 1000) {
+            override fun onFinish() {
+                val background5 = R.drawable.roundedbutton5
+                val constLayout: ConstraintLayout = findViewById(R.id.blackBackground)
+                buttonCreate(magentaBtn, background5, constLayout)
+            }
+            override fun onTick(p0: Long) {
+                time_in_milli_seconds = p0
+            }
+        }
+        countdownTimerBtnMagenta.start()
+        isRunningBtnMagenta = true
     }
 
     private fun btnDisplay(view: Button, time_in_seconds: Long) {
@@ -142,7 +230,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        volumeControlStream = AudioManager.STREAM_MUSIC;
+        volumeControlStream = AudioManager.STREAM_MUSIC
         val constLayout = findViewById<ConstraintLayout>(R.id.blackBackground)
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
@@ -151,32 +239,28 @@ class MainActivity : AppCompatActivity() {
         time_in_milli_seconds = 3 * 1000L
         gameWidth = width - 70
         gameHeight = height - 150
-
         val tStart = System.currentTimeMillis()
 
-        val yellowBtn = Button(this)
-        val background1 = R.drawable.roundedbutton1
-        buttonCreate(yellowBtn, background1, constLayout)
+        Toast.makeText(this, "First button will pop up in 5 seconds", Toast.LENGTH_SHORT).show()
+
+        yellowBtn = Button(this)
+        btnGenTimerYellow(5000)
         btnDisplay(yellowBtn, time_in_milli_seconds)
 
-        val greenBtn = Button(this)
-        val background2 = R.drawable.roundedbutton2
-        buttonCreate(greenBtn, background2, constLayout)
+        greenBtn = Button(this)
+        btnGenTimerGreen(15000)
         btnDisplay(greenBtn, time_in_milli_seconds)
 
-        val blueBtn = Button(this)
-        val background3 = R.drawable.roundedbutton3
-        buttonCreate(blueBtn, background3, constLayout)
+        blueBtn = Button(this)
+        btnGenTimerBlue(25000)
         btnDisplay(blueBtn, time_in_milli_seconds)
 
-        val peachBtn = Button(this)
-        val background4 = R.drawable.roundedbutton4
-        buttonCreate(peachBtn, background4, constLayout)
+        peachBtn = Button(this)
+        btnGenTimerPeach(35000)
         btnDisplay(peachBtn, time_in_milli_seconds)
 
-        val magentaBtn = Button(this)
-        val background5 = R.drawable.roundedbutton5
-        buttonCreate(magentaBtn, background5, constLayout)
+        magentaBtn = Button(this)
+        btnGenTimerMagenta(45000)
         btnDisplay(magentaBtn, time_in_milli_seconds)
 
         val redBtn1 = Button(this)
