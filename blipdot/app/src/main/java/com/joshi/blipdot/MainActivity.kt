@@ -192,28 +192,71 @@ class MainActivity : AppCompatActivity() {
 
         constLayout.setOnClickListener {
             backgroundTouchCount++
-            if(backgroundTouchCount == 1) {
-                Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
-                redbuttonCreate(redBtn1, background6, rand(0, gameWidth), rand(0, gameHeight), constLayout)
-            } else if(backgroundTouchCount == 2) {
-                Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
-                redbuttonCreate(redBtn2, background6, rand(0, gameWidth), rand(0, gameHeight), constLayout)
-            } else if(backgroundTouchCount == 3) {
-                Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
-                redbuttonCreate(redBtn3, background6, rand(0, gameWidth), rand(0, gameHeight), constLayout)
-            } else if(backgroundTouchCount == 4) {
-                Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
-                redbuttonCreate(redBtn4, background6, rand(0, gameWidth), rand(0, gameHeight), constLayout)
-            } else if(backgroundTouchCount == 5) {
-                Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
-                redbuttonCreate(redBtn5, background6, rand(0, gameWidth), rand(0, gameHeight), constLayout)
-            } else {
-                val tEnd = System.currentTimeMillis()
-                val tDelta = tEnd - tStart
-                elapsedSeconds = tDelta / 1000.0
-                Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show()
-                Toast.makeText(this, "Time Taken: $elapsedSeconds seconds", Toast.LENGTH_SHORT).show()
-                Toast.makeText(this, "Final Score: $score", Toast.LENGTH_SHORT).show()
+            when(backgroundTouchCount) {
+                1 -> {
+                    Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
+                    redbuttonCreate(
+                        redBtn1,
+                        background6,
+                        rand(0, gameWidth),
+                        rand(0, gameHeight),
+                        constLayout
+                    )
+                }
+
+                2 -> {
+                    Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
+                    redbuttonCreate(
+                        redBtn2,
+                        background6,
+                        rand(0, gameWidth),
+                        rand(0, gameHeight),
+                        constLayout
+                    )
+                }
+
+                3 -> {
+                    Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
+                    redbuttonCreate(
+                        redBtn3,
+                        background6,
+                        rand(0, gameWidth),
+                        rand(0, gameHeight),
+                        constLayout
+                    )
+                }
+
+                4 -> {
+                    Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
+                    redbuttonCreate(
+                        redBtn4,
+                        background6,
+                        rand(0, gameWidth),
+                        rand(0, gameHeight),
+                        constLayout
+                    )
+                }
+
+                5 -> {
+                    Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
+                    redbuttonCreate(
+                        redBtn5,
+                        background6,
+                        rand(0, gameWidth),
+                        rand(0, gameHeight),
+                        constLayout
+                    )
+                }
+
+                else -> {
+                    val tEnd = System.currentTimeMillis()
+                    val tDelta = tEnd - tStart
+                    elapsedSeconds = tDelta / 1000.0
+                    Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Time Taken: $elapsedSeconds seconds", Toast.LENGTH_SHORT)
+                        .show()
+                    Toast.makeText(this, "Final Score: $score", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
