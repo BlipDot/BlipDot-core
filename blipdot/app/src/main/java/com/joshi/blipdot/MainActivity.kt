@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.util.DisplayMetrics
+import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.Toast
@@ -184,6 +185,10 @@ class MainActivity : AppCompatActivity() {
         val redBtn4 = Button(this)
         val redBtn5 = Button(this)
         val background6 = R.drawable.roundedbutton6
+
+        constLayout.systemUiVisibility = (View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                or View.SYSTEM_UI_FLAG_FULLSCREEN)
 
         constLayout.setOnClickListener {
             backgroundTouchCount++

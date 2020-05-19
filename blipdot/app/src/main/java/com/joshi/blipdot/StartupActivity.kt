@@ -5,7 +5,9 @@ import android.media.AudioManager
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import androidx.constraintlayout.widget.ConstraintLayout
 
 class StartupActivity: AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null
@@ -27,7 +29,12 @@ class StartupActivity: AppCompatActivity() {
         setContentView(R.layout.startupdark)
         val playBtn = findViewById<Button>(R.id.playBtn)
         val instructionsBtn = findViewById<Button>(R.id.insBtn)
+        val layout = findViewById<ConstraintLayout>(R.id.layout)
         volumeControlStream = AudioManager.STREAM_MUSIC;
+
+        layout.systemUiVisibility = (View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                or View.SYSTEM_UI_FLAG_FULLSCREEN)
 
         playBtn.setOnClickListener() {
             popSoundEffect(playBtn, sound = R.raw.pop_sound)
