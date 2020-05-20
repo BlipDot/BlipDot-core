@@ -38,7 +38,7 @@ class StartupActivity: AppCompatActivity() {
 
         playBtn.setOnClickListener() {
             popSoundEffect(playBtn, sound = R.raw.pop_sound)
-            val playIntent = Intent(this, MainActivity::class.java)
+            val playIntent = Intent(this, intermediateActivity::class.java)
             startActivity(playIntent)
         }
 

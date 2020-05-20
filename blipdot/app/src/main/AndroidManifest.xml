@@ -19,5 +19,6 @@
         </activity>
         <activity android:name=".instructionsActivity"></activity>
         <activity android:name=".endGameActivity"></activity>
+        <activity android:name=".intermediateActivity"></activity>
     </application>
 </manifest>
