@@ -25,24 +25,45 @@ class MainActivity : AppCompatActivity() {
     private var gameWidth: Int = 0
     private var gameHeight: Int = 0
     var START_MILLI_SECONDS = 1000L
+
     lateinit var countdown_timer: CountDownTimer
+    lateinit var countdown_timer1: CountDownTimer
+    lateinit var countdown_timer2: CountDownTimer
+    lateinit var countdown_timer3: CountDownTimer
+    lateinit var countdown_timer4: CountDownTimer
+    lateinit var countdown_timer5: CountDownTimer
+
     lateinit var countdownTimerBtnYellow: CountDownTimer
     lateinit var countdownTimerBtnGreen: CountDownTimer
     lateinit var countdownTimerBtnBlue: CountDownTimer
     lateinit var countdownTimerBtnPeach: CountDownTimer
     lateinit var countdownTimerBtnMagenta: CountDownTimer
+
     var isRunning: Boolean = false
+    var isRunning1: Boolean = false
+    var isRunning2: Boolean = false
+    var isRunning3: Boolean = false
+    var isRunning4: Boolean = false
+    var isRunning5: Boolean = false
+
     var isRunningBtnYellow: Boolean = false
     var isRunningBtnGreen: Boolean = false
     var isRunningBtnBlue: Boolean = false
     var isRunningBtnPeach: Boolean = false
     var isRunningBtnMagenta: Boolean = false
     var time_in_milli_seconds = 0L
+
     lateinit var yellowBtn: Button
     lateinit var greenBtn: Button
     lateinit var blueBtn: Button
     lateinit var peachBtn: Button
     lateinit var magentaBtn: Button
+
+    lateinit var View1: Button
+    lateinit var View2: Button
+    lateinit var View3: Button
+    lateinit var View4: Button
+    lateinit var View5: Button
 
     private fun rand(start: Int, end: Int): Int {
         require(!(start > end || end - start + 1 > Int.MAX_VALUE)) { "Illegal Argument" }
@@ -61,16 +82,48 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun onclickAnim(view:Button, gameWidth:Int, gameHeight:Int, time_in_seconds: Long) {
+    private fun onclickAnim1(view:Button, gameWidth:Int, gameHeight:Int, time_in_seconds: Long) {
         val animationOut = AnimationUtils.loadAnimation(this, R.anim.pop_out)
         view.startAnimation(animationOut)
         val animationIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
-        btnDisplay(view, time_in_seconds)
+        btnDisplay1(view, time_in_seconds)
         view.startAnimation(animationIn)
     }
 
-    private fun clickMissAnim(view: Button, gameWidth: Int, gameHeight: Int, time_in_seconds: Long) {
-        val animationOut = AnimationUtils.loadAnimation(this, R.anim.fade_out)
+    private fun onclickAnim2(view:Button, gameWidth:Int, gameHeight:Int, time_in_seconds: Long) {
+        val animationOut = AnimationUtils.loadAnimation(this, R.anim.pop_out)
+        view.startAnimation(animationOut)
+        val animationIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        btnDisplay2(view, time_in_seconds)
+        view.startAnimation(animationIn)
+    }
+
+    private fun onclickAnim3(view:Button, gameWidth:Int, gameHeight:Int, time_in_seconds: Long) {
+        val animationOut = AnimationUtils.loadAnimation(this, R.anim.pop_out)
+        view.startAnimation(animationOut)
+        val animationIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        btnDisplay3(view, time_in_seconds)
+        view.startAnimation(animationIn)
+    }
+
+    private fun onclickAnim4(view:Button, gameWidth:Int, gameHeight:Int, time_in_seconds: Long) {
+        val animationOut = AnimationUtils.loadAnimation(this, R.anim.pop_out)
+        view.startAnimation(animationOut)
+        val animationIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        btnDisplay4(view, time_in_seconds)
+        view.startAnimation(animationIn)
+    }
+
+    private fun onclickAnim5(view:Button, gameWidth:Int, gameHeight:Int, time_in_seconds: Long) {
+        val animationOut = AnimationUtils.loadAnimation(this, R.anim.pop_out)
+        view.startAnimation(animationOut)
+        val animationIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+        btnDisplay5(view, time_in_seconds)
+        view.startAnimation(animationIn)
+    }
+
+    private fun onclickAnim(view:Button, gameWidth:Int, gameHeight:Int, time_in_seconds: Long) {
+        val animationOut = AnimationUtils.loadAnimation(this, R.anim.pop_out)
         view.startAnimation(animationOut)
         val animationIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
         btnDisplay(view, time_in_seconds)
@@ -107,10 +160,42 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun btnClickListener(view: Button) {
+    private fun btnClickListener1(view: Button) {
         view.setOnClickListener() {
             popSoundEffect(view, sound)
-            onclickAnim(view, gameWidth, gameHeight, time_in_milli_seconds)
+            onclickAnim1(view, gameWidth, gameHeight, time_in_milli_seconds)
+            score += 5
+        }
+    }
+
+    private fun btnClickListener2(view: Button) {
+        view.setOnClickListener() {
+            popSoundEffect(view, sound)
+            onclickAnim2(view, gameWidth, gameHeight, time_in_milli_seconds)
+            score += 5
+        }
+    }
+
+    private fun btnClickListener3(view: Button) {
+        view.setOnClickListener() {
+            popSoundEffect(view, sound)
+            onclickAnim3(view, gameWidth, gameHeight, time_in_milli_seconds)
+            score += 5
+        }
+    }
+
+    private fun btnClickListener4(view: Button) {
+        view.setOnClickListener() {
+            popSoundEffect(view, sound)
+            onclickAnim4(view, gameWidth, gameHeight, time_in_milli_seconds)
+            score += 5
+        }
+    }
+
+    private fun btnClickListener5(view: Button) {
+        view.setOnClickListener() {
+            popSoundEffect(view, sound)
+            onclickAnim5(view, gameWidth, gameHeight, time_in_milli_seconds)
             score += 5
         }
     }
@@ -126,7 +211,80 @@ class MainActivity : AppCompatActivity() {
             }
         }
         countdown_timer.start()
-        isRunning = true
+        isRunning1 = true
+    }
+
+    private fun startTimer1(time_in_seconds: Long) {
+        countdown_timer1 = object : CountDownTimer(time_in_seconds, 1000) {
+            override fun onFinish() {
+                onclickAnim1(View1, gameWidth, gameHeight, time_in_seconds)
+                //Toast.makeText(this@MainActivity, "Change Button position", Toast.LENGTH_SHORT).show()
+            }
+            override fun onTick(p0: Long) {
+                time_in_milli_seconds = p0
+            }
+        }
+        countdown_timer1.start()
+        isRunning1 = true
+    }
+
+    private fun startTimer2(time_in_seconds: Long) {
+        countdown_timer2 = object : CountDownTimer(time_in_seconds, 1000) {
+            override fun onFinish() {
+                onclickAnim2(View2, gameWidth, gameHeight, time_in_seconds)
+                //Toast.makeText(this@MainActivity, "Change Button position", Toast.LENGTH_SHORT).show()
+            }
+            override fun onTick(p0: Long) {
+                time_in_milli_seconds = p0
+            }
+        }
+        countdown_timer2.start()
+        isRunning2 = true
+    }
+
+    private fun startTimer3(time_in_seconds: Long) {
+        countdown_timer3 = object : CountDownTimer(time_in_seconds, 1000) {
+            override fun onFinish() {
+                //clickMissAnim(view, gameWidth, gameHeight)
+                onclickAnim3(View3, gameWidth, gameHeight, time_in_seconds)
+                //Toast.makeText(this@MainActivity, "Change Button position", Toast.LENGTH_SHORT).show()
+            }
+            override fun onTick(p0: Long) {
+                time_in_milli_seconds = p0
+            }
+        }
+        countdown_timer3.start()
+        isRunning3 = true
+    }
+
+    private fun startTimer4(time_in_seconds: Long) {
+        countdown_timer4 = object : CountDownTimer(time_in_seconds, 1000) {
+            override fun onFinish() {
+                //clickMissAnim(view, gameWidth, gameHeight)
+                onclickAnim4(View4, gameWidth, gameHeight, time_in_seconds)
+                //Toast.makeText(this@MainActivity, "Change Button position", Toast.LENGTH_SHORT).show()
+            }
+            override fun onTick(p0: Long) {
+                time_in_milli_seconds = p0
+            }
+        }
+        countdown_timer4.start()
+        isRunning4 = true
+    }
+
+    private fun startTimer5(time_in_seconds: Long) {
+        countdown_timer5 = object : CountDownTimer(time_in_seconds, 1000) {
+            override fun onFinish() {
+                //clickMissAnim(view, gameWidth, gameHeight)
+                onclickAnim5(View5, gameWidth, gameHeight, time_in_seconds)
+                //Toast.makeText(this@MainActivity, "Change Button position", Toast.LENGTH_SHORT).show()
+            }
+            override fun onTick(p0: Long) {
+                time_in_milli_seconds = p0
+            }
+        }
+        countdown_timer5.start()
+        isRunning5 = true
     }
 
     private fun btnGenTimerYellow(time_in_seconds: Long) {
@@ -204,6 +362,76 @@ class MainActivity : AppCompatActivity() {
         isRunningBtnMagenta = true
     }
 
+    private fun btnDisplay1(view: Button, time_in_seconds: Long) {
+        View1 = view
+        var viewXCoordinate = rand(70, gameWidth)
+        var viewYCoordinate = rand(70, gameHeight)
+        view.translationX = viewXCoordinate.toFloat()
+        view.translationY = viewYCoordinate.toFloat()
+        if(!isRunning1) {
+            startTimer1(time_in_seconds)
+        } else {
+            pauseTimer1()
+            resetTimer1()
+        }
+    }
+
+    private fun btnDisplay2(view: Button, time_in_seconds: Long) {
+        View2 = view
+        var viewXCoordinate = rand(70, gameWidth)
+        var viewYCoordinate = rand(70, gameHeight)
+        view.translationX = viewXCoordinate.toFloat()
+        view.translationY = viewYCoordinate.toFloat()
+        if(!isRunning2) {
+            startTimer2(time_in_seconds)
+        } else {
+            pauseTimer2()
+            resetTimer2()
+        }
+    }
+
+    private fun btnDisplay3(view: Button, time_in_seconds: Long) {
+        View3 = view
+        var viewXCoordinate = rand(70, gameWidth)
+        var viewYCoordinate = rand(70, gameHeight)
+        view.translationX = viewXCoordinate.toFloat()
+        view.translationY = viewYCoordinate.toFloat()
+        if(!isRunning3) {
+            startTimer3(time_in_seconds)
+        } else {
+            pauseTimer3()
+            resetTimer3()
+        }
+    }
+
+    private fun btnDisplay4(view: Button, time_in_seconds: Long) {
+        View4 = view
+        var viewXCoordinate = rand(70, gameWidth)
+        var viewYCoordinate = rand(70, gameHeight)
+        view.translationX = viewXCoordinate.toFloat()
+        view.translationY = viewYCoordinate.toFloat()
+        if(!isRunning4) {
+            startTimer4(time_in_seconds)
+        } else {
+            pauseTimer4()
+            resetTimer4()
+        }
+    }
+
+    private fun btnDisplay5(view: Button, time_in_seconds: Long) {
+        View5 = view
+        var viewXCoordinate = rand(70, gameWidth)
+        var viewYCoordinate = rand(70, gameHeight)
+        view.translationX = viewXCoordinate.toFloat()
+        view.translationY = viewYCoordinate.toFloat()
+        if(!isRunning5) {
+            startTimer5(time_in_seconds)
+        } else {
+            pauseTimer5()
+            resetTimer5()
+        }
+    }
+
     private fun btnDisplay(view: Button, time_in_seconds: Long) {
         var viewXCoordinate = rand(70, gameWidth)
         var viewYCoordinate = rand(70, gameHeight)
@@ -222,9 +450,59 @@ class MainActivity : AppCompatActivity() {
         isRunning = false
     }
 
+    private fun pauseTimer1() {
+        countdown_timer1.cancel()
+        isRunning1 = false
+    }
+
+    private fun pauseTimer2() {
+        countdown_timer2.cancel()
+        isRunning2 = false
+    }
+
+    private fun pauseTimer3() {
+        countdown_timer3.cancel()
+        isRunning3 = false
+    }
+
+    private fun pauseTimer4() {
+        countdown_timer4.cancel()
+        isRunning4 = false
+    }
+
+    private fun pauseTimer5() {
+        countdown_timer5.cancel()
+        isRunning5 = false
+    }
+
     private fun resetTimer() {
         time_in_milli_seconds = START_MILLI_SECONDS
         startTimer(time_in_milli_seconds * 3)
+    }
+
+    private fun resetTimer1() {
+        time_in_milli_seconds = START_MILLI_SECONDS
+        startTimer1(time_in_milli_seconds * 3)
+    }
+
+    private fun resetTimer2() {
+        time_in_milli_seconds = START_MILLI_SECONDS
+        startTimer2(time_in_milli_seconds * 3)
+    }
+
+    private fun resetTimer3() {
+        time_in_milli_seconds = START_MILLI_SECONDS
+        startTimer3(time_in_milli_seconds * 3)
+    }
+
+    private fun resetTimer4() {
+        time_in_milli_seconds = START_MILLI_SECONDS
+        startTimer4(time_in_milli_seconds * 3)
+    }
+
+    private fun resetTimer5() {
+        time_in_milli_seconds = START_MILLI_SECONDS
+        startTimer5(time_in_milli_seconds * 3)
     }
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -242,27 +520,30 @@ class MainActivity : AppCompatActivity() {
         gameHeight = height - 150
         val tStart = System.currentTimeMillis()
 
-        //Toast.makeText(this, "First button will pop up in 5 seconds", Toast.LENGTH_SHORT).show()
-
         yellowBtn = Button(this)
         btnGenTimerYellow(500)
-        btnDisplay(yellowBtn, time_in_milli_seconds)
+        btnDisplay1(yellowBtn, time_in_milli_seconds)
+        startTimer1(3000)
 
         greenBtn = Button(this)
-        btnGenTimerGreen(15000)
-        btnDisplay(greenBtn, time_in_milli_seconds)
+        btnGenTimerGreen(9500)
+        btnDisplay2(greenBtn, time_in_milli_seconds)
+        startTimer2(3000)
 
         blueBtn = Button(this)
-        btnGenTimerBlue(25000)
-        btnDisplay(blueBtn, time_in_milli_seconds)
+        btnGenTimerBlue(19500)
+        btnDisplay3(blueBtn, time_in_milli_seconds)
+        startTimer3(3000)
 
         peachBtn = Button(this)
-        btnGenTimerPeach(35000)
-        btnDisplay(peachBtn, time_in_milli_seconds)
+        btnGenTimerPeach(29500)
+        btnDisplay4(peachBtn, time_in_milli_seconds)
+        startTimer4(3000)
 
         magentaBtn = Button(this)
-        btnGenTimerMagenta(45000)
-        btnDisplay(magentaBtn, time_in_milli_seconds)
+        btnGenTimerMagenta(39500)
+        btnDisplay5(magentaBtn, time_in_milli_seconds)
+        startTimer5(3000)
 
         val redBtn1 = Button(this)
         val redBtn2 = Button(this)
@@ -338,9 +619,6 @@ class MainActivity : AppCompatActivity() {
                     val tEnd = System.currentTimeMillis()
                     val tDelta = tEnd - tStart
                     elapsedSeconds = tDelta / 1000.0
-                    /*Toast.makeText(this, "You Lost", Toast.LENGTH_SHORT).show()
-                    Toast.makeText(this, "Time Taken: $elapsedSeconds seconds", Toast.LENGTH_SHORT).show()
-                    Toast.makeText(this, "Final Score: $score", Toast.LENGTH_SHORT).show()*/
                     val intent = Intent(this, endGameActivity::class.java)
                     intent.putExtra("score", score)
                     startActivity(intent)
@@ -348,15 +626,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        btnClickListener(yellowBtn)
+        btnClickListener1(yellowBtn)
 
-        btnClickListener(greenBtn)
+        btnClickListener2(greenBtn)
 
-        btnClickListener(blueBtn)
+        btnClickListener3(blueBtn)
 
-        btnClickListener(peachBtn)
+        btnClickListener4(peachBtn)
 
-        btnClickListener(magentaBtn)
+        btnClickListener5(magentaBtn)
 
         redBtnClickListener(redBtn1)
 
