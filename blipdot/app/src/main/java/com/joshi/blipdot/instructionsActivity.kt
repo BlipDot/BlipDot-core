@@ -28,16 +28,17 @@ class instructionsActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.gameplay)
         val layout = findViewById<ConstraintLayout>(R.id.layout)
+        val backBtn = findViewById<Button>(R.id.backBtn)
         volumeControlStream = AudioManager.STREAM_MUSIC;
 
         layout.systemUiVisibility = (View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 or View.SYSTEM_UI_FLAG_FULLSCREEN)
 
-        /*backBtn.setOnClickListener() {
+        backBtn.setOnClickListener() {
             popSoundEffect(backBtn, sound = R.raw.pop_sound)
             val intent = Intent(this, StartupActivity::class.java)
             startActivity(intent)
-        }*/
+        }
     }
 }
