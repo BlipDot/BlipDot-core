@@ -242,10 +242,10 @@ class MainActivity : AppCompatActivity() {
         gameHeight = height - 150
         val tStart = System.currentTimeMillis()
 
-        Toast.makeText(this, "First button will pop up in 5 seconds", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "First button will pop up in 5 seconds", Toast.LENGTH_SHORT).show()
 
         yellowBtn = Button(this)
-        btnGenTimerYellow(5000)
+        btnGenTimerYellow(500)
         btnDisplay(yellowBtn, time_in_milli_seconds)
 
         greenBtn = Button(this)
