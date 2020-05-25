@@ -32,24 +32,4 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:layout_constraintVertical_bias="0.195" />
 
-    <Button
-        android:id="@+id/skipBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/roundedbutton5"
-        android:fontFamily="@font/nixie_one"
-        android:paddingLeft="40px"
-        android:paddingTop="15px"
-        android:paddingRight="40px"
-        android:paddingBottom="15px"
-        android:text="Skip"
-        android:textAllCaps="false"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/countDownText" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
