@@ -192,7 +192,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun buttonCreate(view:Button, drawable:Int, layout: ConstraintLayout) {
-        view.layoutParams = ConstraintLayout.LayoutParams(70, 70)
+        view.layoutParams = ConstraintLayout.LayoutParams(85, 85)
         view.text = ""
         view.setBackgroundResource(drawable)
         view.alpha = 1F
@@ -202,7 +202,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun redbuttonCreate(view:Button, drawable:Int, viewXCoordinate:Int, viewYCoordinate:Int, layout: ConstraintLayout) {
-        view.layoutParams = ConstraintLayout.LayoutParams(75, 75)
+        view.layoutParams = ConstraintLayout.LayoutParams(85, 85)
         view.text = ""
         view.setBackgroundResource(drawable)
         view.alpha = 1F
@@ -547,8 +547,8 @@ class MainActivity : AppCompatActivity() {
         val width = displayMetrics.widthPixels
         val height = displayMetrics.heightPixels
         time_in_milli_seconds = 3 * 1000L
-        gameWidth = width - 70
-        gameHeight = height - 150
+        gameWidth = width - 85
+        gameHeight = height - 165
         val tStart = System.currentTimeMillis()
 
         yellowBtn = Button(this)
