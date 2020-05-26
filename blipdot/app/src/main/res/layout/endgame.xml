@@ -59,7 +59,6 @@
         android:id="@+id/playAgainBtn"
         android:layout_width="170dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="100dp"
         android:background="@drawable/roundedbutton3"
         android:fontFamily="@font/nixie_one"
         android:text="Play Again"
@@ -72,13 +71,12 @@
         app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ok"
-        app:layout_constraintVertical_bias="0.977" />
+        app:layout_constraintVertical_bias="0.568" />
 
     <Button
         android:id="@+id/homeButton"
         android:layout_width="170dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="100dp"
         android:background="@drawable/roundedbutton4"
         android:fontFamily="@font/nixie_one"
         android:text="Home"
@@ -90,7 +88,7 @@
         app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ok"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.568" />
 
     <TextView
         android:id="@+id/scoreDisplay"
