@@ -49,9 +49,9 @@ class endGameActivity:AppCompatActivity() {
 
         if(score <= 50) {
             terrible.visibility = View.VISIBLE
-        } else if(score > 50 && score <= 100) {
+        } else if(score in 51..100) {
             bad.visibility = View.VISIBLE
-        } else if(score > 100 && score < 150) {
+        } else if(score in 101..149) {
             ok.visibility = View.VISIBLE
         } else {
             good.visibility = View.VISIBLE
