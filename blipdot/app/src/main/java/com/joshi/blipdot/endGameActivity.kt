@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
+import androidx.core.view.marginBottom
 
 class endGameActivity:AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null
@@ -33,12 +36,26 @@ class endGameActivity:AppCompatActivity() {
 
         var score = intent.getIntExtra("score", 0)
         scoreDisplay.text = "Score: $score"
-
         val background = findViewById<ConstraintLayout>(R.id.background)
 
         background.systemUiVisibility = (View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 or View.SYSTEM_UI_FLAG_FULLSCREEN)
+
+        val terrible = findViewById<ImageView>(R.id.terrible)
+        val ok = findViewById<ImageView>(R.id.ok)
+        val bad = findViewById<ImageView>(R.id.bad)
+        val good = findViewById<ImageView>(R.id.good)
+
+        if(score <= 50) {
+            terrible.visibility = View.VISIBLE
+        } else if(score > 50 && score <= 100) {
+            bad.visibility = View.VISIBLE
+        } else if(score > 100 && score < 150) {
+            ok.visibility = View.VISIBLE
+        } else {
+            good.visibility = View.VISIBLE
+        }
 
         homeBtn.setOnClickListener() {
             popSoundEffect(homeBtn, sound = R.raw.pop_sound)

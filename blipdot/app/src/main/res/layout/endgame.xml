@@ -8,7 +8,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/terrible"
         android:layout_width="337dp"
         android:layout_height="434dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,30 +16,69 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
+        android:visibility="invisible"
         app:srcCompat="@drawable/condescending" />
+
+    <ImageView
+        android:id="@+id/good"
+        android:layout_width="337dp"
+        android:layout_height="434dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/good" />
+
+    <ImageView
+        android:id="@+id/ok"
+        android:layout_width="337dp"
+        android:layout_height="434dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/ok" />
+
+    <ImageView
+        android:id="@+id/bad"
+        android:layout_width="337dp"
+        android:layout_height="434dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/semicondescending" />
 
     <Button
         android:id="@+id/playAgainBtn"
         android:layout_width="170dp"
         android:layout_height="65dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/roundedbutton3"
         android:fontFamily="@font/nixie_one"
         android:text="Play Again"
         android:textAllCaps="false"
         android:textColor="#000"
-        android:textStyle="bold"
         android:textSize="25dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/homeButton"
         app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.482" />
+        app:layout_constraintTop_toBottomOf="@+id/ok"
+        app:layout_constraintVertical_bias="0.977" />
 
     <Button
         android:id="@+id/homeButton"
         android:layout_width="170dp"
         android:layout_height="65dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/roundedbutton4"
         android:fontFamily="@font/nixie_one"
         android:text="Home"
@@ -50,8 +89,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.482" />
+        app:layout_constraintTop_toBottomOf="@+id/ok"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/scoreDisplay"
@@ -66,7 +105,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.056" />
+        app:layout_constraintTop_toBottomOf="@+id/ok"
+        app:layout_constraintTop_toTopOf="@+id/terrible"
+        app:layout_constraintVertical_bias="0.693" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
