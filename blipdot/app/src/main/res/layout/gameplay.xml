@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/nixie_one"
-        android:text="5. Each red dot is worth one point, but if you miss it you lose 2 points! "
+        android:text="5. If you tap on the red dot,you lose  two points! "
         android:textColor="@android:color/white"
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
