@@ -22,5 +22,9 @@
         <activity android:name=".instructionsActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".endGameActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".intermediateActivity" android:screenOrientation="portrait"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 </manifest>
