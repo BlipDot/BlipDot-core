@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
             mediaPlayer!!.stop()
             mediaPlayer!!.reset()
             mediaPlayer = MediaPlayer.create(this, R.raw.pop_sound)
-            mediaPlayer?.start()
+            mediaPlayer!!.start()
         } else {
             mediaPlayer = MediaPlayer.create(this, R.raw.pop_sound)
             mediaPlayer?.start()
@@ -420,6 +420,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             pauseTimer1()
             resetTimer1()
+            //startTimer1(time_in_seconds)
         }
     }
 
@@ -552,29 +553,31 @@ class MainActivity : AppCompatActivity() {
         val tStart = System.currentTimeMillis()
 
         yellowBtn = Button(this)
-        btnGenTimerYellow(500)
+        //btnGenTimerYellow(500)
+        val background1 = R.drawable.roundedbutton1
+        buttonCreate(yellowBtn, background1, constLayout)
         btnDisplay1(yellowBtn, time_in_milli_seconds)
-        startTimer1(3000)
+        //startTimer1(3000)
 
         greenBtn = Button(this)
         btnGenTimerGreen(9500)
         btnDisplay2(greenBtn, time_in_milli_seconds)
-        startTimer2(3000)
+        //startTimer2(3000)
 
         blueBtn = Button(this)
         btnGenTimerBlue(19500)
         btnDisplay3(blueBtn, time_in_milli_seconds)
-        startTimer3(3000)
+        //startTimer3(3000)
 
         peachBtn = Button(this)
         btnGenTimerPeach(29500)
         btnDisplay4(peachBtn, time_in_milli_seconds)
-        startTimer4(3000)
+        //startTimer4(3000)
 
         magentaBtn = Button(this)
         btnGenTimerMagenta(39500)
         btnDisplay5(magentaBtn, time_in_milli_seconds)
-        startTimer5(3000)
+        //startTimer5(3000)
 
         val redBtn1 = Button(this)
         val redBtn2 = Button(this)
