@@ -5,9 +5,14 @@ import android.media.AudioManager
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.Html
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.startupdark.*
 
 class StartupActivity: AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null
@@ -22,6 +27,10 @@ class StartupActivity: AppCompatActivity() {
             mediaPlayer = MediaPlayer.create(this, R.raw.pop_sound)
             mediaPlayer?.start()
         }
+    }
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

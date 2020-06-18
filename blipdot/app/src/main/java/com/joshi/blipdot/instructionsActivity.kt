@@ -24,6 +24,11 @@ class instructionsActivity: AppCompatActivity() {
             mediaPlayer?.start()
         }
     }
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.gameplay)
