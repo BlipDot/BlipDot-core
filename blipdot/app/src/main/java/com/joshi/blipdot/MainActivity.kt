@@ -606,13 +606,16 @@ class MainActivity : AppCompatActivity() {
         gameHeight = height - 275
         val tStart = System.currentTimeMillis()
         val scoreText = findViewById<TextView>(R.id.scoreText)
+        val crossText = findViewById<TextView>(R.id.crossText)
         constLayout.systemUiVisibility = (View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 or View.SYSTEM_UI_FLAG_FULLSCREEN)
 
         scoreText.text = "Score = ${score}"
-        val text = "<font color=#ffff99>Score</font> <font color=#98ff98>=</font> <font color=#6a9eb8>$score</font>"
-        scoreText.text = Html.fromHtml(text) as Editable?
+        val text1 = "<font color=#ffff99>Score</font> <font color=#98ff98>=</font> <font color=#6a9eb8>$score</font>"
+        scoreText.text = Html.fromHtml(text1) as Editable?
+        val text = "<font color=#ffff99>Missed</font> <font color=#98ff98>=</font> <font color=#6a9eb8>$backgroundTouchCount</font>"
+        crossText.text = Html.fromHtml(text) as Editable?
 
         yellowBtn = Button(this)
         btnGenTimerYellow(0)
@@ -654,7 +657,8 @@ class MainActivity : AppCompatActivity() {
             scoreText.text = Html.fromHtml(text) as Editable?
             when(backgroundTouchCount) {
                 1 -> {
-                    Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
+                    val text = "<font color=#ffff99>Missed</font> <font color=#98ff98>=</font> <font color=#6a9eb8>$backgroundTouchCount</font>"
+                    crossText.text = Html.fromHtml(text) as Editable?
                     redbuttonCreate(
                         redBtn1,
                         background6,
@@ -665,7 +669,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 2 -> {
-                    Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
+                    val text = "<font color=#ffff99>Missed</font> <font color=#98ff98>=</font> <font color=#6a9eb8>$backgroundTouchCount</font>"
+                    crossText.text = Html.fromHtml(text) as Editable?
                     redbuttonCreate(
                         redBtn2,
                         background6,
@@ -676,7 +681,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 3 -> {
-                    Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
+                    val text = "<font color=#ffff99>Missed</font> <font color=#98ff98>=</font> <font color=#6a9eb8>$backgroundTouchCount</font>"
+                    crossText.text = Html.fromHtml(text) as Editable?
                     redbuttonCreate(
                         redBtn3,
                         background6,
@@ -687,7 +693,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 4 -> {
-                    Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
+                    val text = "<font color=#ffff99>Missed</font> <font color=#98ff98>=</font> <font color=#6a9eb8>$backgroundTouchCount</font>"
+                    crossText.text = Html.fromHtml(text) as Editable?
                     redbuttonCreate(
                         redBtn4,
                         background6,
@@ -698,7 +705,8 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 5 -> {
-                    Toast.makeText(this, "Cross: $backgroundTouchCount", Toast.LENGTH_SHORT).show()
+                    val text = "<font color=#ffff99>Missed</font> <font color=#98ff98>=</font> <font color=#6a9eb8>$backgroundTouchCount</font>"
+                    crossText.text = Html.fromHtml(text) as Editable?
                     redbuttonCreate(
                         redBtn5,
                         background6,
