@@ -5,10 +5,13 @@ import android.media.AudioManager
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.text.Editable
 import android.text.Html
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import kotlinx.android.synthetic.main.activity_main.*
@@ -39,11 +42,15 @@ class StartupActivity: AppCompatActivity() {
         val playBtn = findViewById<Button>(R.id.playBtn)
         val instructionsBtn = findViewById<Button>(R.id.insBtn)
         val layout = findViewById<ConstraintLayout>(R.id.layout)
+        val logo = findViewById<ImageView>(R.id.logo)
+        val bounceAnim = AnimationUtils.loadAnimation(this, R.anim.bounce_anim)
         volumeControlStream = AudioManager.STREAM_MUSIC;
 
         layout.systemUiVisibility = (View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 or View.SYSTEM_UI_FLAG_FULLSCREEN)
+
+        logo.startAnimation(bounceAnim)
 
         playBtn.setOnClickListener() {
             popSoundEffect(playBtn, sound = R.raw.pop_sound)

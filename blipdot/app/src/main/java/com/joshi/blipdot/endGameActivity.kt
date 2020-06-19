@@ -8,12 +8,8 @@ import android.text.Editable
 import android.text.Html
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.isVisible
-import androidx.core.view.marginBottom
-import org.w3c.dom.Text
 
 class endGameActivity:AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null
