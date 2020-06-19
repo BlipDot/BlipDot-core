@@ -57,11 +57,15 @@ class endGameActivity:AppCompatActivity() {
             val text1 = "<font color=#6a9eb8>Try</font> <font color=#fb98f1>Again!</font>"
             textView11.text = Html.fromHtml(text1) as Editable?
         } else if(score in 51..100) {
-            val text = "<font color=#ffff99>You're</font> <font color=#98ff98>Good</font> <font color=#6a9eb8>At</font> <font color=#fb98f1>\nThis!</font>"
+            val text = "<font color=#ffff99>You're</font> <font color=#98ff98>Good</font>"
             textView9.text = Html.fromHtml(text) as Editable?
+            val text1 =  "<font color=#6a9eb8>At</font> <font color=#fb98f1>This!</font>"
+            textView11.text = Html.fromHtml(text1) as Editable?
         } else if(score in 101..149) {
-            val text = "<font color=#ffff99>You're</font> <font color=#98ff98>Great</font> <font color=#6a9eb8>At</font> <font color=#fb98f1>\nThis!</font>"
+            val text = "<font color=#ffff99>You're</font> <font color=#98ff98>Great</font>"
             textView9.text = Html.fromHtml(text) as Editable?
+            val text1 =  "<font color=#6a9eb8>At</font> <font color=#fb98f1>This!</font>"
+            textView11.text = Html.fromHtml(text1) as Editable?
         } else {
             val text = "<font color=#ffff99>Amazing!!"
             textView9.text = Html.fromHtml(text) as Editable?
